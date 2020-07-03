@@ -1,0 +1,45 @@
+{
+  "scopeName": "source.structurizr",
+  "patterns": [{ "include": "#expression" }],
+  "repository": {
+    "expression": {
+      "patterns": [
+        { "include": "#letter" },
+        { "include": "#paren-expression" },
+        { "include": "#keywirds" },
+        { "include": "#strings" }
+      ]
+    },
+    "keywirds": {
+      "patterns": [
+        {
+          "name": "keyword.control.structurizr",
+          "match": "\\b(workspace|model|views|person|softwareSystem|styles|element|background|color)\\b"
+        }
+      ]
+    },
+    "strings": {
+        "name": "string.quoted.double.structurizr",
+        "begin": "\"",
+        "end": "\"",
+        "patterns": [
+            {
+                "name": "constant.character.escape.structurizrdsl",
+                "match": "\\\\."
+            }
+        ]
+    },
+    "paren-expression": {
+      "begin": "\\(",
+      "end": "\\)",
+      "beginCaptures": {
+        "0": { "name": "punctuation.paren.open" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.paren.close" }
+      },
+      "name": "expression.group",
+      "patterns": [{ "include": "#expression" }]
+    }
+  }
+}
